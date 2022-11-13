@@ -1,11 +1,16 @@
 import React from "react";
-import { Map, Marker } from "pigeon-maps";
+import { Map, Marker, ZoomControl } from "pigeon-maps";
 
 export function MyMap(props) {
   const providers = props.providers;
-
+  const position = props.position;
+  console.log(position);
   return (
-    <Map height={500} defaultCenter={[50.879, 4.6997]} defaultZoom={5}>
+    <Map
+      height={500}
+      defaultCenter={[position.latitude, position.longitude]}
+      defaultZoom={5}
+    >
       {providers.map((ele, i) => (
         <Marker
           key={i}
@@ -13,6 +18,7 @@ export function MyMap(props) {
           anchor={[ele.location.latitude, ele.location.longitude]}
         />
       ))}
+      <ZoomControl />
     </Map>
   );
 }
