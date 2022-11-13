@@ -24,17 +24,27 @@ function App() {
 
   function handleInput(event) {
     setSearchTerm(event.target.value);
+    setFoundProviders(
+      allProviders.filter((ele) =>
+        ele.location.city.toLowerCase().includes(searchTerm)
+      )
+    );
   }
-  console.log(searchTerm);
 
   return (
     <div className="App">
       <h1>Bike Rental Providers</h1>
-      <MyMap providers={allProviders} />
+      <MyMap
+        providers={searchTerm.length < 1 ? allProviders : foundProviders}
+      />
 
-      <input onChange={handleInput} value={searchTerm}></input>
+      <input
+        onChange={handleInput}
+        value={searchTerm}
+        placeholder="Search city"
+      ></input>
 
-      {allProviders.map((ele) => (
+      {(searchTerm.length < 1 ? allProviders : foundProviders).map((ele) => (
         <li key={ele.id}>
           {ele.name} {ele.location.city} ({ele.location.country})
         </li>
