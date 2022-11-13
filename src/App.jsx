@@ -22,11 +22,18 @@ function App() {
     fetchData();
   }, []);
 
-  console.log(allProviders);
+  function handleInput(event) {
+    setSearchTerm(event.target.value);
+  }
+  console.log(searchTerm);
+
   return (
     <div className="App">
       <h1>Bike Rental Providers</h1>
-      <MyMap />
+      <MyMap providers={allProviders} />
+
+      <input onChange={handleInput} value={searchTerm}></input>
+
       {allProviders.map((ele) => (
         <li key={ele.id}>
           {ele.name} {ele.location.city} ({ele.location.country})
