@@ -85,6 +85,7 @@ function App() {
         placeholder="Search city"
       ></input>
 
+      <h3>Bike Providers:</h3>
       {
         //Display providers list
         (searchTerm.length < 1 ? allProviders : foundProviders).map((ele) => (
