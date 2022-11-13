@@ -9,7 +9,6 @@ function App() {
   const [foundProviders, setFoundProviders] = useState([]);
   const [allProviders, setAllProviders] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [position, setPosition] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,11 +20,7 @@ function App() {
       }
     };
     fetchData();
-    navigator.geolocation.getCurrentPosition((position) =>
-      setPosition(position)
-    );
   }, []);
-
   function handleInput(event) {
     setSearchTerm(event.target.value);
     setFoundProviders(
@@ -40,7 +35,6 @@ function App() {
       <h1>Bike Rental Providers</h1>
       <MyMap
         providers={searchTerm.length < 1 ? allProviders : foundProviders}
-        position={position.coords}
       />
 
       <input
