@@ -35,7 +35,6 @@ function App() {
           },
           {
             enableHighAccuracy: false,
-            timeout: 5000,
             maximumAge: Infinity,
           }
         );
