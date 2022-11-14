@@ -3,7 +3,7 @@ import "./App.css";
 import axios from "axios";
 import { MyMap } from "./MyMap";
 
-const url = "http://api.citybik.es/v2/networks";
+const url = "https://api.citybik.es/v2/networks";
 
 function App() {
   const [allProviders, setAllProviders] = useState([]);
