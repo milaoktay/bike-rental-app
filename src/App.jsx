@@ -32,6 +32,11 @@ function App() {
             setStatus(null);
             setPosition([50, 10]);
             setZoom(2);
+          },
+          {
+            enableHighAccuracy: false,
+            timeout: 5000,
+            maximumAge: Infinity,
           }
         );
       }
@@ -40,15 +45,14 @@ function App() {
 
   //Fetch data of all bike providers
   useEffect(() => {
-    const fetchData = async () => {
+    (async () => {
       try {
         const response = await axios.get(url);
         setAllProviders(response.data.networks);
       } catch (error) {
         console.error(error.message);
       }
-    };
-    fetchData();
+    })();
   }, []);
 
   //Filter data on search
